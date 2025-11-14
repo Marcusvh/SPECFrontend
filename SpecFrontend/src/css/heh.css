@@ -1,0 +1,353 @@
+.hud-screen {
+  height: 95vh;
+  width: 95vw;
+  background: url("https://static.vecteezy.com/system/resources/previews/055/145/330/large_2x/spaceship-cockpit-view-of-earth-from-orbit-photo.jpeg") center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+  font-family: "Share Tech Mono", monospace;
+  color: #00ffee;
+}
+
+/* CRT Scanlines */
+.hud-scanlines {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,255,255,0.02) 0px,
+    rgba(0,255,255,0.08) 2px,
+    rgba(0,255,255,0.02) 4px
+  );
+  animation: scan 5s linear infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(20%); }
+}
+
+/* TARGET RETICLE */
+.hud-reticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hud-reticle .circle {
+  width: 170px;
+  height: 170px;
+  border: 2px solid #00ffee;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00ffee;
+  animation: pulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  100% { transform: scale(1.05); opacity: 1; }
+}
+
+.crosshair-v, .crosshair-h {
+  position: absolute;
+  background: #00ffee;
+}
+
+.crosshair-v {
+  width: 2px;
+  height: 240px;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.35;
+}
+
+.crosshair-h {
+  height: 2px;
+  width: 240px;
+  left: -35px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.35;
+}
+
+/* Telemetry Panels */
+.hud-panel {
+  position: absolute;
+  top: 30px;
+  padding: 18px 30px;
+  border: 1px solid #00ffee;
+  background: rgba(0,20,25,0.25);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 12px #00ffee;
+  text-shadow: 0 0 6px #00ffee;
+  animation: float 4s infinite ease-in-out;
+}
+
+.hud-panel.left { left: 30px; }
+.hud-panel.right { right: 30px; }
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Status Bottom Center */
+.hud-status {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  font-weight: bold;
+  color: #00ffee;
+  text-shadow: 0 0 10px #00ffee, 0 0 30px #00ffee;
+  animation: glow 1.6s infinite alternate;
+}
+
+@keyframes glow {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+/* --------------------------- */
+/* --------------------------- */
+/* --------------------------- */
+
+.ascension-container {
+  position: relative;
+  height: 96vh;
+  width: 96vw;
+  overflow: hidden;
+  background: radial-gradient(circle, #0d0018, #000010 70%, black);
+  font-family: "Share Tech Mono", monospace;
+  color: #00eaff;
+}
+
+/* ---- SCREEN DISTORTION ---- */
+.screen-distortion {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 0, 255, 0.03) 0px,
+    rgba(0, 255, 255, 0.05) 2px,
+    rgba(255, 0, 255, 0.03) 4px
+  );
+  mix-blend-mode: overlay;
+  animation: distort 3s infinite linear;
+}
+
+@keyframes distort {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(20px) scale(1.01); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* ---- VOLUMETRIC LIGHT PILLARS ---- */
+.lightbeam {
+  position: absolute;
+  width: 160px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, #7b00ff33, transparent);
+  filter: blur(12px);
+  opacity: 0.6;
+  animation: beamPulse 4s infinite ease-in-out;
+}
+
+.beam1 { left: 20%; animation-delay: 0s; }
+.beam2 { left: 50%; animation-delay: 1s; }
+.beam3 { left: 80%; animation-delay: 2s; }
+
+@keyframes beamPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.9; }
+}
+
+/* ---- GLYPHS (massive rotating constructs) ---- */
+.glyph {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid #7b00ff;
+  box-shadow: 0 0 40px #7b00ff, 0 0 100px #ff00f7 inset;
+  mix-blend-mode: screen;
+}
+
+.g1 { width: 420px; height: 420px; left: 50%; top: 50%; transform: translate(-50%, -50%); animation: spin 6s linear infinite; }
+.g2 { width: 700px; height: 700px; left: 50%; top: 50%; transform: translate(-50%, -50%); animation: spinReverse 10s linear infinite; opacity: 0.35; }
+.g3 { width: 1100px; height: 1100px; left: 50%; top: 50%; transform: translate(-50%, -50%); animation: spin 14s linear infinite; opacity: 0.2; }
+
+@keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes spinReverse { from { transform: translate(-50%, -50%) rotate(360deg); } to { transform: translate(-50%, -50%) rotate(0deg); } }
+
+/* ---- ELECTRIC ARCS ---- */
+.arc {
+  position: absolute;
+  width: 160px;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #00eaff,
+    #ff00f7,
+    transparent
+  );
+  box-shadow: 0 0 20px #00eaff;
+  animation: arcZap 0.25s infinite;
+}
+
+.arc1 { top: 40%; left: 20%; }
+.arc2 { top: 60%; left: 60%; animation-delay: 0.15s; }
+.arc3 { top: 50%; left: 35%; animation-delay: 0.3s; }
+
+@keyframes arcZap {
+  0% { opacity: 0; transform: scaleX(0.2); }
+  30% { opacity: 1; transform: scaleX(1.3); }
+  100% { opacity: 0; transform: scaleX(0); }
+}
+
+/* ---- CENTER CORE ---- */
+.ascension-core {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00eaff, #0077ff, #7b00ff);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 0 40px #00eaff,
+    0 0 120px #0077ff,
+    0 0 240px #7b00ff;
+  animation: corePulse 1.4s infinite ease-in-out;
+}
+
+@keyframes corePulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.25); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ---- SIDE PANELS ---- */
+.overlay {
+  position: absolute;
+  top: 50px;
+  width: 300px;
+  padding: 20px;
+  background: rgba(5, 0, 20, 0.35);
+  border: 1px solid cyan;
+  box-shadow: 0 0 20px cyan;
+  backdrop-filter: blur(5px);
+  animation: panelGlow 2.5s infinite alternate;
+}
+
+.overlay.left { left: 40px; }
+.overlay.right { right: 40px; }
+
+@keyframes panelGlow {
+  from { box-shadow: 0 0 12px cyan; }
+  to { box-shadow: 0 0 30px cyan; }
+}
+
+.warning { color: #ff0066; text-shadow: 0 0 10px #ff0066; }
+
+/* ---- SEQUENCE TEXT ---- */
+.sequence-text {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  color: #ff00f7;
+  text-shadow: 0 0 15px #ff00f7, 0 0 40px #ff00f7;
+}
+
+/* ---- VORTEX OF PARTICLES ---- */
+.vortex {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 3px);
+  background-size: 6px 6px;
+  animation: vortexSpin 18s linear infinite;
+  mix-blend-mode: screen;
+  opacity: 0.2;
+}
+
+@keyframes vortexSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(-360deg) scale(1.3); }
+}
+.shake {
+  animation: shakeAnim 0.18s linear;
+}
+
+@keyframes shakeAnim {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-6px, 4px); }
+  50% { transform: translate(5px, -4px); }
+  75% { transform: translate(-4px, -6px); }
+  100% { transform: translate(0, 0); }
+}
+.afterimage {
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: blur(4px) brightness(1.3);
+  opacity: 0.12;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.shader-waves {
+  position: absolute;
+  inset: 0;
+  background: repeating-radial-gradient(
+    circle at center,
+    transparent 0%,
+    transparent 48%,
+    rgba(0, 255, 255, 0.1) 50%,
+    transparent 52%
+  );
+  animation: waveDistort 6s infinite linear;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+@keyframes waveDistort {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.35) rotate(180deg); }
+  100% { transform: scale(1) rotate(360deg); }
+}
+.digital-rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+    rgba(0,255,150,0.15) 0px,
+    transparent 1px
+  );
+  background-size: 2px 20px;
+  animation: rainFall 1.5s linear infinite;
+  opacity: 0.25;
+}
+
+@keyframes rainFall {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(100%); }
+}
+.heartbeat .ascension-core {
+  animation: heartPulseCore 0.35s ease-out;
+}
+
+@keyframes heartPulseCore {
+  0% { transform: translate(-50%,-50%) scale(1); }
+  50% { transform: translate(-50%,-50%) scale(1.3); }
+  100% { transform: translate(-50%,-50%) scale(1); }
+}
+
+.heartbeat .g1,
+.heartbeat .g2,
+.heartbeat .g3 {
+  filter: brightness(1.3);
+}

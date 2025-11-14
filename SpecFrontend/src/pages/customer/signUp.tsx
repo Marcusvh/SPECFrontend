@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { addCustomer } from "../../hooks/CustomerConsumer";
+import { addCustomer } from "../../apiRequest/requests";
 
 const SignUpPage: React.FC = () => {
   const [form, setForm] = useState({
@@ -23,7 +23,7 @@ const SignUpPage: React.FC = () => {
   };
 
   return (
-    <div className="h-screen bg-[#050510] text-white font-['Orbitron'] flex flex-col relative overflow-hidden">
+    <div className="h-[95vh] bg-[#050510] text-white font-['Orbitron'] flex flex-col relative overflow-hidden">
       {/* Subtle animated grid / glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#0a0a16_0%,#050510_80%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,255,255,0.04)_1px,transparent_1px),linear-gradient(rgba(255,0,255,0.04)_1px,transparent_1px)] bg-[size:60px_60px] opacity-40" />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { fetchCustomerById, updateCustomer } from "../../hooks/CustomerConsumer"; 
+import { fetchCustomerById, updateCustomer } from "../../apiRequest/requests"; 
 import AnimatedButton from "../../components/tableButtons";
 import { type Customer } from "../../types/customer";
 import Header from "../../components/header";
@@ -87,12 +87,58 @@ const EditCustomer: React.FC = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-2 rounded-md bg-gray-900 text-white border-2 border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"
                     >
-                    <option value="">Select Country</option>
-                    <option value="France">France</option>
-                    <option value="USA">USA</option>
-                    <option value="Germany">Germany</option>
-                    <option value="Japan">Japan</option>
-                    <option value="Brazil">Brazil</option>
+                        <option value="">Select Country</option>
+                        <option value="United States">United States</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Ireland">Ireland</option>
+                        <option value="Germany">Germany</option>
+                        <option value="France">France</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Finland">Finland</option>
+                        <option value="Poland">Poland</option>
+                        <option value="Czech Republic">Czech Republic</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Greece">Greece</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="Russia">Russia</option>
+                        <option value="Ukraine">Ukraine</option>
+                        <option value="Israel">Israel</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <option value="United Arab Emirates">United Arab Emirates</option>
+                        <option value="India">India</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="China">China</option>
+                        <option value="Japan">Japan</option>
+                        <option value="South Korea">South Korea</option>
+                        <option value="Vietnam">Vietnam</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Philippines">Philippines</option>
+                        <option value="Australia">Australia</option>
+                        <option value="New Zealand">New Zealand</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Singapore">Singapore</option>
                     </select>
                 </div>
                 </div>
@@ -102,7 +148,7 @@ const EditCustomer: React.FC = () => {
                 <AnimatedButton color="cyan" needLink={false} onClick={(() => handleSubmit)} id={customer.customerId}>
                     Save
                 </AnimatedButton>
-                <AnimatedButton color="pink" needLink={true} id={0} linkRef="/ViewCustomers">
+                <AnimatedButton color="pink" needLink={true} id={0} linkRef="/Customers">
                     Cancel
                 </AnimatedButton>
                 </div>

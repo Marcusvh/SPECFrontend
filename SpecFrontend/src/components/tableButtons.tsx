@@ -45,7 +45,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
       <span className="relative z-10 font-mono">{children}</span>
     </Link>
   ) : (
-    <button onClick={onClick} className={baseClasses}>
+    <button onClick={onClick} className={`${baseClasses} cursor-pointer`}>
       <span className={`absolute top-0 -left-24 w-16 h-full ${colors[color].slide} blur-md opacity-70 group-hover:animate-slide`}></span>
       <span className="relative z-10 font-mono">{children}</span>
     </button>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import "../../css/customer.css"
 import { CustomerTable } from '../../components/customerTable'
 import { type Customer } from '../../types/customer';
-import { apiRequest, deleteCustomer } from '../../hooks/CustomerConsumer'
+import { apiRequest, deleteCustomer } from '../../apiRequest/requests'
 import Header from '../../components/header';
 
 
